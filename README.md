@@ -7,8 +7,7 @@ This app is used to create communication channel between two users via 2FA APIs.
 1. Create an account on **AT&T** portal. 
 2. Open ```index.html``` in the browser.
 	Enter the server URL, for eg: 
-	For AT&T production https://apimarket.att.com , enter https://oauth-cpaas.att.com
-	For NVS staging https://nvs-apimarket.kandy.io, enter https://nvs-cpaas-oauth.kandy.io
+	For AT&T API Marketplace https://apimarket.att.com , enter https://oauth-cpaas.att.com	
 3. Choose to get accessToken by Password Grant flow or Client Credentials flow.
 4. For Password Grant flow, enter 
    - *clientId* 
