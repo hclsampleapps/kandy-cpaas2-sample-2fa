@@ -4,26 +4,33 @@
 
 This app is used to create communication channel between two users via 2FA APIs.
 
-#### Demo
+ - Try the [demo](https://hclsampleapps.github.io/kandy-cpaas2-sample-2fa/app/)
+ - Get the [source code](https://github.com/hclsampleapps/kandy-cpaas2-sample-2fa)
 
-To check a demo of this app, visit the [link](https://hclsampleapps.github.io/kandy-cpaas2-sample-2fa/).
-
-#### Steps 
+#### User manual 
 
 1. Create an account on **AT&T** portal via [Register now for a free account](https://apimarket.att.com/signup).
-2. Open ```index.html``` in the browser.
-3. Choose to get accessToken by Password Grant flow or Client Credentials flow.
-4. For Password Grant flow, enter 
-   - *clientId* 
-   - *emailId* 
-   - *password*  
-5. For Client Credentials Grant flow, enter	
-   - *privateKey*
-   - *privateSecret*   
-6. Click Login
-7. You may proceed to 'Authenticate via SMS' or 'Authenticate via Email'.
-8. When 'Authenticating via SMS', enter the phone number in E164 format in which you want to receive the SMS code. You can verify the code once received in the same page. Use 'Resend OTP' provided you didn't validate the code already.
-9. Same procedure can be done for 'Authenticating via Email' by entering the email ID on which you want to receive the email code.
+2. Open an instance of `index.html` in the browser for a *User*.
+3. Enter the *server URL*, for e.g.,
+	- For AT&T API Marketplace [apimarket.att.com](https://apimarket.att.com), enter `https://oauth-cpaas.att.com`
+4. Choose to get accessToken by *Password Grant* flow or *Client Credentials* flow.
+5. Login using *User*'s credential in the browser window.
+6. For **Password Grant** flow, enter 
+	- *clientId* 
+	- *emailId* 
+	- *password*  
+7. For **Client Credentials Grant** flow, enter
+	- *privateKey*
+	- *privateSecret*   
+8. Click ***Login***
+9. You may proceed to ***Authenticate via SMS*** or ***Authenticate via Email***.
+10. When ***Authenticating via SMS***, enter the phone number in E164 format in which you want to receive the SMS code. You can verify the code once received in the same page. Use ***Resend OTP*** provided if you didn't validated the code already.
+11. Same procedure can be done for ***Authenticating via Email*** by entering the email ID on which you want to receive the email code.
+
+##### Notes
+
+ - Existing user can confirm their account via [Log in to AT&T API Marketplace](https://apimarket.att.com/login)
+ - You can download *kandy.js* from [Developer documentation - SDKs](https://apimarket.att.com/developer/sdks/javascript)
 
 ### Development
 
