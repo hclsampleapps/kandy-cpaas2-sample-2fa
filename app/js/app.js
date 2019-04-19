@@ -1,6 +1,3 @@
-var baseUrl = 'https://nvs-cpaas-oauth.kandy.io';
-// var baseUrl = 'https://oauth-cpaas.att.com';
-
 const LOGIN_VIEW = 1;
 const SELECTION_VIEW = 2;
 const VIA_SMS_VIEW = 3;
@@ -8,15 +5,17 @@ const VIA_SMS_OTP_VIEW = 4;
 const VIA_EMAIL_VIEW = 5;
 const VIA_EMAIL_OTP_VIEW = 6;
 
+var baseUrl;
 var changeView;
 var userToken;
 var authViaSMSObj;
 var authViaEmailObj;
 
-function onLoad() {
+whenReady(function() {
     changeView = new ChangeView();
+    changeView.showPasswordGrant();
     changeView.showView();
-}
+});
 
 class Status {
     constructor(el) {
@@ -57,9 +56,18 @@ class ChangeView {
         this.loginView = document.getElementById("loginScreen");
         this.authViaView = document.getElementById("authScreen");
         this.smsView = document.getElementById("authViaSMS");
-        this.verifySMSView = document.getElementById("verifySMS")
+        this.verifySMSView = document.getElementById("verifySMS");
         this.emailView = document.getElementById("authViaEmail");
-        this.verifyEmailView = document.getElementById("verifyEmail")
+        this.verifyEmailView = document.getElementById("verifyEmail");
+
+        this.accountPasswordGrantView = document.getElementById('passwordID');
+        this.accountClientCredentialsView = document.getElementById('clientCredID');
+
+        this.accountPasswordGrantradio = document.getElementById('passwordGrant');
+        this.accountPasswordGrantradio.addEventListener('click', (evt) => this.showPasswordGrant(evt));
+
+        this.accountClientCredentialsradio = document.getElementById('clientCred');
+        this.accountClientCredentialsradio.addEventListener('click', (evt) => this.showClientCredentials(evt));
     }
 
     showView(viewId) {		
@@ -72,35 +80,39 @@ class ChangeView {
 
         switch (viewId) {
             case LOGIN_VIEW:
-
                 Effect.show(this.loginView);
                 break;
             case SELECTION_VIEW:
                 Effect.show(this.authViaView);
                 break;
-
             case VIA_SMS_VIEW:
                 Effect.show(this.smsView);
                 break;
-
             case VIA_SMS_OTP_VIEW:
                 Effect.show(this.smsView);
                 Effect.show(this.verifySMSView);
                 break;
-
             case VIA_EMAIL_VIEW:
                 Effect.show(this.emailView);
                 break;
-
             case VIA_EMAIL_OTP_VIEW:
                 Effect.show(this.emailView);
                 Effect.show(this.verifyEmailView);
                 break;
-
             default:
                 Effect.show(this.loginView);
                 break;
         }
+    }
+
+    showPasswordGrant() {
+        Effect.hide(this.accountClientCredentialsView);
+        Effect.show(this.accountPasswordGrantView);
+    }
+
+    showClientCredentials() {
+        Effect.show(this.accountClientCredentialsView);
+        Effect.hide(this.accountPasswordGrantView);
     }
 }
 
@@ -621,7 +633,6 @@ async function loginByPasswordGrant() {
   userToken = new UserToken(cpaasUrl, clientId, userEmail, userPassword);  
   userToken.initialize();
 }
-
 
 async function loginByClientCred() {
 	let cpaasUrl = constructServerUrl();	

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>2FA App</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div>
+        <h2>Two-Factor Authentication (2FA) App</h2>
+        <div id="loginScreen">
+            <h4>Authenticate using your account information</h4>
+            <p id="loginResponse"></p>
+            <div>
+                <ul>
+                    <li>
+                        <label>Server URL:</label>
+                        <input type="text" id="serverUrl" class="long">
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="inline">
+                    <li>
+                        <input type="radio" name="optionsRadios" id="passwordGrant" checked>
+                        <label>Password Grant </label>
+                    </li>
+                    <li>
+                        <input type="radio" name="optionsRadios" id="clientCred">
+                        <label>Client Credentials</label>
+                    </li>
+                </ul>
+                <div id="passwordID">
+                    <ul>
+                        <li>
+                            <label>Client ID:</label>
+                            <input type="text" id="clientId" />
+                        </li>
+                        <li>
+                            <label>User Email:</label>
+                            <input type="text" id="userEmail" />
+                        </li>
+                        <li>
+                            <label>Password:</label>
+                            <input type="password" id="password" />
+                        </li>
+                    </ul>
+                    <button type="button" onclick="loginByPasswordGrant()" id="loginByPwdBtn">Login</button>
+                </div>
+                <div id="clientCredID">
+                    <ul>
+                        <li>
+                            <label>Private project key:</label>
+                            <input type="text" id="privateKey" />
+                        </li>
+                        <li>
+                            <label>Private project secret:</label>
+                            <input type="text" id="privateSecret" />
+                        </li>
+                    </ul>
+                    <button type="button" onclick="loginByClientCred()" id="loginByProjCredBtn">Login</button>
+                </div>
+            </div>
+        </div>
+        <div id="authScreen">
+            <p><a href="#" onclick="userToken.backFromSelectionView(event)">Back</a></p>
+            <h4>Authenticate via</h4>
+            <ul>
+                <li><button type="button" onclick="userToken.gotoSMSView()">SMS</button></li>
+                <li><button type="button" onclick="userToken.gotoEmailView()">Email</button></li>
+            </ul>
+        </div>
+        <div id="authViaSMS">
+            <p><a href="#" id="smsBack" onclick="authViaSMSObj.backFromSMS(event)">Back</a></p>
+            <h4>Authentication via SMS </h4>
+            <p id="smsResponse"></p>
+            <ul>
+                <li>
+                    <label>Contact Number:</label>
+                    <input type="text" id="userContactNumber" placeholder="+1234567890" />
+                </li>
+            </ul>
+            <button type="button" onclick="authViaSMS()">Send OTP</button>
+            <p><a href="#" onclick="authViaSMSObj.resendSMS(event)" title="Use it to resend OTP, provided it is not verified">Resend OTP</a></p>
+        </div>
+        <div id="verifySMS">
+            <ul>
+                <li>
+                    <label>Enter OTP:</label>
+                    <input type="text" id="otpSMSText" placeholder="123456" />
+                </li>
+            </ul>
+            <button type="button" onclick="authViaSMSObj.verifySMS()">Verify</button>
+        </div>
+        <div id="authViaEmail">
+            <p><a href="#" id="emailBack" onclick="authViaEmailObj.backFromEmail(event)">Back</a></p>
+            <h4>Authentication via Email </h4>
+            <p id="emailResponse"></p>
+            <ul>
+                <li>
+                    <label>Email:</label>
+                    <input type="text" id="userEmailId" placeholder="user@domain.com" />
+                </li>
+            </ul>
+            <button type="button" onclick="authViaEmail()">Send OTP</button>
+            <p><a href="#" onclick="authViaEmailObj.resendEmail(event)" title="Use it to resend OTP, provided it is not verified">Resend OTP</a></p>
+        </div>
+        <div id="verifyEmail">
+            <ul>
+                <li>
+                    <label>Enter OTP:</label>
+                    <input type="text" id="otpEmailText" placeholder="aBcdEFgHij" />
+                </li>
+            </ul>
+            <button type="button" onclick="authViaEmailObj.verifyEmail()">Verify</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/utility.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
