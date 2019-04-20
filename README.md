@@ -3,7 +3,6 @@
 ### 2FA
 
 This app is used to create communication channel between two users via 2FA APIs.
-To check a demo of this app, visit https://hclsampleapps.github.io/kandy-cpaas2-sample-2fa/ 
 
  - Try the [demo](https://hclsampleapps.github.io/kandy-cpaas2-sample-2fa/app/)
  - Get the [source code](https://github.com/hclsampleapps/kandy-cpaas2-sample-2fa)
