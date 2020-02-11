@@ -517,7 +517,7 @@ class AuthViaEmail {
                 },
                 expiry: 3600,
                 message: "Your code is {code}",
-                subject: "Auth code from ribbon"
+                subject: "Auth code from AT&T"
             }
         };
         this.postEmailRequest("PUT", resendUrl, cargo);
@@ -548,7 +548,7 @@ class AuthViaEmail {
                 },
                 expiry: 3600,
                 message: "Your code is {code}",
-                subject: "Auth code from ribbon"
+                subject: "Auth code from AT&T"
             }
         };
         this.postEmailRequest("POST", this.cpaasUrl, cargo);
