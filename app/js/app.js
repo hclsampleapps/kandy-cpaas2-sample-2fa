@@ -12,10 +12,19 @@ var authViaSMSObj;
 var authViaEmailObj;
 
 whenReady(function() {
+    Notification.initialize();
     changeView = new ChangeView();
     changeView.showPasswordGrant();
     changeView.showView();
 });
+
+class Notification {
+    static initialize(el) {
+        this.container = document.querySelector('.notification');
+        this.close = document.querySelector('.notification .close');
+        this.close.addEventListener('click', e => this.container.classList.add('hide'));
+    }
+}
 
 class Status {
     constructor(el) {
